@@ -1,0 +1,22 @@
+{
+  "name": "alurabank",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/felipefanucchi/alura-bank.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felipefanucchi/alura-bank/issues"
+  },
+  "homepage": "https://github.com/felipefanucchi/alura-bank#readme",
+  "devDependencies": {
+    "typescript": "^2.3.2"
+  }
+}
