@@ -13,7 +13,7 @@ class NegociacaoController {
         e.preventDefault();
 
         const negociacao = new Negociacao(
-            new Date(this.inputData.value.replace(/-/g, ',')),
+            new Date(this.inputData.value.replace(/-/g, '/')),
             parseInt(this.inputQntd.value),
             parseFloat(this.inputValor.value)
         );
