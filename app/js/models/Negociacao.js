@@ -1,27 +1,36 @@
-class Negociacao {
-    constructor(data, quantidade, valor) {
-        if(!data) throw new Error('Data precisa ser especificada');
-        if(!quantidade) throw new Error('Quantidade precisa ser especificado');
-        if(!valor) throw new Error('Valor precisa ser especificado');
-        
-        this._data = data;
-        this._quantidade = quantidade;
-        this._valor = valor;
+var Negociacao = /** @class */ (function () {
+    function Negociacao(_data, _quantidade, _valor) {
+        this._data = _data;
+        this._quantidade = _quantidade;
+        this._valor = _valor;
     }
-
-    get data() {
-        return this._data
-    }
-
-    get quantidade() {
-        return this._quantidade
-    }
-
-    get valor() {
-        return this._valor
-    }
-
-    get volume() {
-        return this._quantidade * this._valor
-    }
-}
+    Object.defineProperty(Negociacao.prototype, "data", {
+        get: function () {
+            return this._data;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Negociacao.prototype, "quantidade", {
+        get: function () {
+            return this._quantidade;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Negociacao.prototype, "valor", {
+        get: function () {
+            return this._valor;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Negociacao.prototype, "volume", {
+        get: function () {
+            return this._quantidade * this._valor;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Negociacao;
+}());
