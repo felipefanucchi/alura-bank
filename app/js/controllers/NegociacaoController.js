@@ -17,7 +17,7 @@ var NegociacaoController = /** @class */ (function () {
         this.mensagemView.update('Negociação Adicionada com sucesso!');
         setTimeout(function (e) {
             _this.mensagemView.remove();
-        }, 1500);
+        }, 1000);
     };
     return NegociacaoController;
 }());

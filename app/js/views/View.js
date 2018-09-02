@@ -6,7 +6,7 @@ var View = /** @class */ (function () {
         this.element.innerHTML = this.template(model);
     };
     View.prototype.remove = function () {
-        this.element.parentNode.removeChild(this.element);
+        this.element.removeChild(this.element.firstChild);
     };
     return View;
 }());

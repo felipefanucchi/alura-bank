@@ -10,7 +10,7 @@ abstract class View<T> {
     }
 
     remove():void {
-        this.element.parentNode.removeChild(this.element)
+        this.element.removeChild(this.element.firstChild);
     }
 
     abstract template(model: T):string

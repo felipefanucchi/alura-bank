@@ -28,6 +28,6 @@ class NegociacaoController {
 
         setTimeout(e => {
             this.mensagemView.remove()
-        }, 1500);
+        }, 1000);
     }
 }
