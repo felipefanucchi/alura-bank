@@ -4,5 +4,4 @@ const elements = {
 
 const negociacaoController = new NegociacaoController();
 
-elements.form
-    .addEventListener('submit', negociacaoController.adiciona.bind(negociacaoController));
+elements.form.addEventListener('submit', negociacaoController.adiciona.bind(negociacaoController));

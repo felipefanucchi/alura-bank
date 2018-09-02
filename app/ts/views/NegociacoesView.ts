@@ -1,10 +1,4 @@
-class NegociacoesView {
-
-    private element: Element; 
-
-    constructor(selector:string) {
-        this.element = document.querySelector(selector)
-    }
+class NegociacoesView extends View<Negociacoes> {
 
     template(model: Negociacoes):string {
         return `
@@ -35,9 +29,5 @@ class NegociacoesView {
             </tfoot>
         </table>
         `
-    }
-
-    update(model: Negociacoes):void {
-        this.element.innerHTML = this.template(model);
     }
 }
