@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -8,6 +9,8 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+Object.defineProperty(exports, "__esModule", { value: true });
+var View_1 = require("./View");
 var NegociacoesView = (function (_super) {
     __extends(NegociacoesView, _super);
     function NegociacoesView() {
@@ -19,4 +22,5 @@ var NegociacoesView = (function (_super) {
         }).join('') + "\n            </tbody>\n            \n            <tfoot>\n            </tfoot>\n        </table>\n        ";
     };
     return NegociacoesView;
-}(View));
+}(View_1.View));
+exports.NegociacoesView = NegociacoesView;

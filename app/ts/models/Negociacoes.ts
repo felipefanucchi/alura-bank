@@ -1,4 +1,5 @@
-class Negociacoes {
+import { Negociacao } from './Negociacao';
+export class Negociacoes {
     private negociacoes: Negociacao[] = new Array();
 
     adiciona(negociacao: Negociacao):void {
