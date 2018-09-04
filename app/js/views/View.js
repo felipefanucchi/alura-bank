@@ -1,12 +1,16 @@
-var View = (function () {
-    function View(selector) {
-        this.element = $(selector);
-    }
-    View.prototype.update = function (model) {
-        this.element.html(this.template(model));
-    };
-    View.prototype.removeAlert = function () {
-        this.element.children().remove();
-    };
-    return View;
-}());
+var Views;
+(function (Views) {
+    var View = (function () {
+        function View(selector) {
+            this.element = $(selector);
+        }
+        View.prototype.update = function (model) {
+            this.element.html(this.template(model));
+        };
+        View.prototype.removeAlert = function () {
+            this.element.children().remove();
+        };
+        return View;
+    }());
+    Views.View = View;
+})(Views || (Views = {}));

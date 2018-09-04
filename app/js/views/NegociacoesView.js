@@ -8,15 +8,20 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var NegociacoesView = (function (_super) {
-    __extends(NegociacoesView, _super);
-    function NegociacoesView() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    NegociacoesView.prototype.template = function (model) {
-        return "\n        <table class=\"table table-hover table-bordered\">\n            <thead>\n                <tr>\n                    <th>DATA</th>\n                    <th>QUANTIDADE</th>\n                    <th>VALOR</th>\n                    <th>VOLUME</th>\n                </tr>\n            </thead>\n            \n            <tbody>\n                " + model.toArray().map(function (negociacao) {
-            return "\n                    <tr>\n                        <td>" + negociacao.data.getDate() + "/" + (negociacao.data.getMonth() + 1) + "/" + negociacao.data.getFullYear() + "</td>\n                        <td>" + negociacao.quantidade + "</td>\n                        <td>" + negociacao.valor + "</td>\n                        <td>" + negociacao.volume + "</td>\n                    </tr>\n                    ";
-        }).join('') + "\n            </tbody>\n            \n            <tfoot>\n            </tfoot>\n        </table>\n        ";
-    };
-    return NegociacoesView;
-}(View));
+var Views;
+(function (Views) {
+    var View = Views.View;
+    var NegociacoesView = (function (_super) {
+        __extends(NegociacoesView, _super);
+        function NegociacoesView() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        NegociacoesView.prototype.template = function (model) {
+            return "\n            <table class=\"table table-hover table-bordered\">\n                <thead>\n                    <tr>\n                        <th>DATA</th>\n                        <th>QUANTIDADE</th>\n                        <th>VALOR</th>\n                        <th>VOLUME</th>\n                    </tr>\n                </thead>\n                \n                <tbody>\n                    " + model.toArray().map(function (negociacao) {
+                return "\n                        <tr>\n                            <td>" + negociacao.data.getDate() + "/" + (negociacao.data.getMonth() + 1) + "/" + negociacao.data.getFullYear() + "</td>\n                            <td>" + negociacao.quantidade + "</td>\n                            <td>" + negociacao.valor + "</td>\n                            <td>" + negociacao.volume + "</td>\n                        </tr>\n                        ";
+            }).join('') + "\n                </tbody>\n                \n                <tfoot>\n                </tfoot>\n            </table>\n            ";
+        };
+        return NegociacoesView;
+    }(View));
+    Views.NegociacoesView = NegociacoesView;
+})(Views || (Views = {}));

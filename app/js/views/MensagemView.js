@@ -8,13 +8,18 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var MensagemView = (function (_super) {
-    __extends(MensagemView, _super);
-    function MensagemView() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    MensagemView.prototype.template = function (model) {
-        return "<p class=\"alert alert-info\">" + model + "</p>";
-    };
-    return MensagemView;
-}(View));
+var Views;
+(function (Views) {
+    var View = Views.View;
+    var MensagemView = (function (_super) {
+        __extends(MensagemView, _super);
+        function MensagemView() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MensagemView.prototype.template = function (model) {
+            return "<p class=\"alert alert-info\">" + model + "</p>";
+        };
+        return MensagemView;
+    }(View));
+    Views.MensagemView = MensagemView;
+})(Views || (Views = {}));

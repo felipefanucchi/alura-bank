@@ -1,8 +1,8 @@
 var NegociacaoController = (function () {
     function NegociacaoController() {
         this.negociacoes = new Negociacoes();
-        this.negociacoesView = new NegociacoesView('#NegociacoesView');
-        this.mensagemView = new MensagemView('#mensagemView');
+        this.negociacoesView = new Views.NegociacoesView('#NegociacoesView');
+        this.mensagemView = new Views.MensagemView('#mensagemView');
         this.inputData = $('#data');
         this.inputQntd = $('#quantidade');
         this.inputValor = $('#valor');
