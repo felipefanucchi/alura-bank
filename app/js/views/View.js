@@ -1,12 +1,12 @@
 var View = /** @class */ (function () {
     function View(selector) {
-        this.element = document.querySelector(selector);
+        this.element = $(selector);
     }
     View.prototype.update = function (model) {
-        this.element.innerHTML = this.template(model);
+        this.element.html(this.template(model));
     };
-    View.prototype.remove = function () {
-        this.element.removeChild(this.element.firstChild);
+    View.prototype.removeAlert = function () {
+        this.element.children().remove();
     };
     return View;
 }());

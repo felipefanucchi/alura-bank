@@ -1,5 +1,5 @@
 var elements = {
-    form: document.querySelector('.form')
+    form: $('.form')
 };
 var negociacaoController = new NegociacaoController();
-elements.form.addEventListener('submit', negociacaoController.adiciona.bind(negociacaoController));
+elements.form.submit(negociacaoController.adiciona.bind(negociacaoController));

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/felipefanucchi/alura-bank#readme",
   "devDependencies": {
+    "@types/jquery": "^3.3.6",
     "typescript": "^2.3.2"
   },
   "dependencies": {

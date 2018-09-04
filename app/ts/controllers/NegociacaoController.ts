@@ -1,15 +1,15 @@
 class NegociacaoController {
-    private inputData: HTMLInputElement;
-    private inputQntd: HTMLInputElement;
-    private inputValor: HTMLInputElement;
+    private inputData: JQuery;
+    private inputQntd: JQuery;
+    private inputValor: JQuery;
     private negociacoes = new Negociacoes();
     private negociacoesView = new NegociacoesView('#NegociacoesView');
     private mensagemView = new MensagemView('#mensagemView');
 
     constructor() {
-        this.inputData = <HTMLInputElement>document.querySelector('#data');
-        this.inputQntd = <HTMLInputElement>document.querySelector('#quantidade');
-        this.inputValor = <HTMLInputElement>document.querySelector('#valor');
+        this.inputData = $('#data');
+        this.inputQntd = $('#quantidade');
+        this.inputValor = $('#valor');
         this.negociacoesView.update(this.negociacoes);
     }
 
@@ -17,9 +17,9 @@ class NegociacaoController {
         e.preventDefault();
 
         const negociacao = new Negociacao(
-            new Date(this.inputData.value.replace(/-/g, '/')),
-            parseInt(this.inputQntd.value),
-            parseFloat(this.inputValor.value)
+            new Date(this.inputData.val().toString().replace(/-/g, '/') ),
+            parseInt(this.inputQntd.val().toString()),
+            parseFloat(this.inputValor.val().toString())
         );
         
         this.negociacoes.adiciona(negociacao);
@@ -27,7 +27,7 @@ class NegociacaoController {
         this.mensagemView.update('Negociação Adicionada com sucesso!');
 
         setTimeout(e => {
-            this.mensagemView.remove()
+            this.mensagemView.removeAlert()
         }, 1000);
     }
 }
