@@ -1,4 +1,4 @@
-var NegociacaoController = /** @class */ (function () {
+var NegociacaoController = (function () {
     function NegociacaoController() {
         this.negociacoes = new Negociacoes();
         this.negociacoesView = new NegociacoesView('#NegociacoesView');

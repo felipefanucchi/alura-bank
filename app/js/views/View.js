@@ -1,4 +1,4 @@
-var View = /** @class */ (function () {
+var View = (function () {
     function View(selector) {
         this.element = $(selector);
     }

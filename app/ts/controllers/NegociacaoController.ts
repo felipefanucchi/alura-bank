@@ -1,3 +1,7 @@
+/**
+ * @class NegociacaoController
+ * Para integração da minha model juntamente a minha view. 
+ */
 class NegociacaoController {
     private inputData: JQuery;
     private inputQntd: JQuery;
