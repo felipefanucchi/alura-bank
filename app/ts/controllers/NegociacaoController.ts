@@ -1,7 +1,5 @@
-import { NegociacoesView } from '../views/NegociacoesView';
-import { Negociacao } from '../models/Negociacao';
-import { Negociacoes } from '../models/Negociacoes';
-import { MensagemView } from '../views/MensagemView';
+import { Negociacao, Negociacoes } from '../models/index';
+import { MensagemView, NegociacoesView } from '../views/index';
 /**
  * @class NegociacaoController
  * Para integração da minha model juntamente a minha view. 
