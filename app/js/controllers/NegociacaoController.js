@@ -35,10 +35,7 @@ System.register(["../models/index", "../views/index"], function (exports_1, cont
                 NegociacaoController.prototype.adiciona = function (e) {
                     var _this = this;
                     e.preventDefault();
-                    var dateValue = this.inputData.val();
-                    var qntdValue = this.inputQntd.val();
-                    var valorValue = this.inputValor.val();
-                    var date = new Date(dateValue.replace(/-/g, '/'));
+                    var date = new Date(this.inputData.val().replace(/-/g, '/'));
                     date.toLocaleDateString();
                     if (this.isWeekend(date)) {
                         this.mensagemView.update('Transações somente em dias úteis.', 'danger');
@@ -47,7 +44,7 @@ System.register(["../models/index", "../views/index"], function (exports_1, cont
                         }, 1500);
                         return false;
                     }
-                    var negociacao = new index_1.Negociacao(date, parseInt(qntdValue), parseFloat(valorValue));
+                    var negociacao = new index_1.Negociacao(date, parseInt(this.inputQntd.val()), parseFloat(this.inputValor.val()));
                     this.negociacoes.adiciona(negociacao);
                     this.negociacoesView.update(this.negociacoes);
                     this.mensagemView.update('Negociação Adicionada com sucesso!', 'success');

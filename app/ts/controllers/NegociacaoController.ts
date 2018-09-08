@@ -10,7 +10,6 @@ enum DiaSemana {
     Sexta,
     Sábado
 };
-
 /**
  * @class NegociacaoController
  * Para integração da minha model juntamente a minha view. 
@@ -32,11 +31,8 @@ export class NegociacaoController {
 
     adiciona(e: Event):boolean | void {
         e.preventDefault();
-        const dateValue: string = this.inputData.val() as string;
-        const qntdValue: string = this.inputQntd.val() as string;
-        const valorValue: string = this.inputValor.val() as string;
-
-        const date = new Date(dateValue.replace(/-/g, '/') );
+        
+        const date = new Date((this.inputData.val() as string).replace(/-/g, '/') );
         date.toLocaleDateString();
 
         if(this.isWeekend(date)) {
@@ -49,8 +45,8 @@ export class NegociacaoController {
 
         const negociacao = new Negociacao(
             date,
-            parseInt(qntdValue),
-            parseFloat(valorValue)
+            parseInt((this.inputQntd.val() as string)),
+            parseFloat((this.inputValor.val() as string))
         );
         
         this.negociacoes.adiciona(negociacao);
