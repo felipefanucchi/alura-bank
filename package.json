@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc",
-    "start": "tsc -w"
+    "watch": "tsc -w",
+    "server": "lite-server -c bs-config.json",
+    "start": "concurrently \"npm run watch\" \"npm run server\""
   },
   "repository": {
     "type": "git",
@@ -20,9 +22,8 @@
   "homepage": "https://github.com/felipefanucchi/alura-bank#readme",
   "devDependencies": {
     "@types/jquery": "^3.3.6",
+    "concurrently": "^4.0.1",
+    "lite-server": "^2.3.0",
     "typescript": "^2.3.2"
-  },
-  "dependencies": {
-    "npm": "^6.4.1"
   }
 }

@@ -7,3 +7,4 @@ const elements = {
 const negociacaoController = new NegociacaoController();
 
 elements.form.submit(negociacaoController.adiciona.bind(negociacaoController));
+
