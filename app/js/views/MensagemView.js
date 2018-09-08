@@ -24,8 +24,8 @@ System.register(["./View"], function (exports_1, context_1) {
                 function MensagemView() {
                     return _super !== null && _super.apply(this, arguments) || this;
                 }
-                MensagemView.prototype.template = function (model) {
-                    return "<p class=\"alert alert-info\">" + model + "</p>";
+                MensagemView.prototype.template = function (model, type) {
+                    return "<p class=\"alert alert-" + type + "\">" + model + "</p>";
                 };
                 return MensagemView;
             }(View_1.View));

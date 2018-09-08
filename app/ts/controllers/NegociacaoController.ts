@@ -1,5 +1,16 @@
 import { Negociacao, Negociacoes } from '../models/index';
 import { MensagemView, NegociacoesView } from '../views/index';
+
+enum DiaSemana {
+    Domingo,
+    Segunda,
+    Terça,
+    Quarta,
+    Quinta,
+    Sexta,
+    Sábado
+};
+
 /**
  * @class NegociacaoController
  * Para integração da minha model juntamente a minha view. 
@@ -19,21 +30,39 @@ export class NegociacaoController {
         this.negociacoesView.update(this.negociacoes);
     }
 
-    adiciona(e: Event) {
+    adiciona(e: Event):boolean | void {
         e.preventDefault();
+        const dateValue: string = this.inputData.val() as string;
+        const qntdValue: string = this.inputQntd.val() as string;
+        const valorValue: string = this.inputValor.val() as string;
+
+        const date = new Date(dateValue.replace(/-/g, '/') );
+        date.toLocaleDateString();
+
+        if(this.isWeekend(date)) {
+            this.mensagemView.update('Transações somente em dias úteis.', 'danger');
+            setTimeout(e => {
+                this.mensagemView.removeAlert()
+            }, 1500);
+            return false;
+        }
 
         const negociacao = new Negociacao(
-            new Date(this.inputData.val().toString().replace(/-/g, '/') ),
-            parseInt(this.inputQntd.val().toString()),
-            parseFloat(this.inputValor.val().toString())
+            date,
+            parseInt(qntdValue),
+            parseFloat(valorValue)
         );
         
         this.negociacoes.adiciona(negociacao);
         this.negociacoesView.update(this.negociacoes);
-        this.mensagemView.update('Negociação Adicionada com sucesso!');
+        this.mensagemView.update('Negociação Adicionada com sucesso!', 'success');
 
         setTimeout(e => {
             this.mensagemView.removeAlert()
-        }, 1000);
+        }, 1500);
+    }
+
+    private isWeekend(day: Date):boolean {
+        return day.getDay() === DiaSemana.Domingo || day.getDay() === DiaSemana.Sábado;
     }
 }

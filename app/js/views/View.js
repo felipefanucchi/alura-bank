@@ -6,11 +6,16 @@ System.register([], function (exports_1, context_1) {
         setters: [],
         execute: function () {
             View = (function () {
-                function View(selector) {
+                function View(selector, escape) {
+                    if (escape === void 0) { escape = false; }
+                    this.escape = escape;
                     this.element = $(selector);
                 }
-                View.prototype.update = function (model) {
-                    this.element.html(this.template(model));
+                View.prototype.update = function (model, typeAlert) {
+                    var template = this.template(model, typeAlert);
+                    if (this.escape)
+                        template = template.replace(/<script>[\s\S]*?<\/script>/, '');
+                    this.element.html(template);
                 };
                 View.prototype.removeAlert = function () {
                     this.element.children().remove();

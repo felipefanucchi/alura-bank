@@ -6,7 +6,7 @@ export class Negociacoes {
         this.negociacoes.push(negociacao)
     }
 
-    toArray():Negociacao[] {
-        return [].concat(this.negociacoes);
+    toArray():Negociacao[] { 
+        return ([] as Negociacao[]).concat(this.negociacoes);
     }
 }
