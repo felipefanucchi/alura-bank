@@ -1,6 +1,12 @@
-System.register(["../models/index", "../views/index"], function (exports_1, context_1) {
+System.register(["../models/index", "../views/index", "../helpers/decorators/logExecTime"], function (exports_1, context_1) {
     "use strict";
-    var index_1, index_2, DiaSemana, NegociacaoController;
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var index_1, index_2, logExecTime_1, DiaSemana, NegociacaoController;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [
@@ -9,6 +15,9 @@ System.register(["../models/index", "../views/index"], function (exports_1, cont
             },
             function (index_2_1) {
                 index_2 = index_2_1;
+            },
+            function (logExecTime_1_1) {
+                logExecTime_1 = logExecTime_1_1;
             }
         ],
         execute: function () {
@@ -55,6 +64,9 @@ System.register(["../models/index", "../views/index"], function (exports_1, cont
                 NegociacaoController.prototype.isWeekend = function (day) {
                     return day.getDay() === DiaSemana.Domingo || day.getDay() === DiaSemana.Sábado;
                 };
+                __decorate([
+                    logExecTime_1.logExecTime(true)
+                ], NegociacaoController.prototype, "adiciona", null);
                 return NegociacaoController;
             }());
             exports_1("NegociacaoController", NegociacaoController);

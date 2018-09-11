@@ -1,3 +1,5 @@
+import { logExecTime } from '../helpers/decorators/logExecTime';
+
 export abstract class View<T> {
     private element: JQuery;
 

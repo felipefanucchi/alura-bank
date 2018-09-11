@@ -1,5 +1,6 @@
 import { Negociacao, Negociacoes } from '../models/index';
 import { MensagemView, NegociacoesView } from '../views/index';
+import { logExecTime } from '../helpers/decorators/logExecTime';
 
 enum DiaSemana {
     Domingo,
@@ -29,6 +30,7 @@ export class NegociacaoController {
         this.negociacoesView.update(this.negociacoes);
     }
 
+    @logExecTime(true)
     adiciona(e: Event):boolean | void {
         e.preventDefault();
         
