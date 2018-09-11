@@ -1,6 +1,6 @@
 import { Negociacao, Negociacoes } from '../models/index';
 import { MensagemView, NegociacoesView } from '../views/index';
-import { logExecTime } from '../helpers/decorators/logExecTime';
+import { logExecTime, domInject } from '../helpers/decorators/index';
 
 enum DiaSemana {
     Domingo,
@@ -16,17 +16,17 @@ enum DiaSemana {
  * Para integração da minha model juntamente a minha view. 
  */
 export class NegociacaoController {
+    @domInject('#data')
     private inputData: JQuery;
+    @domInject('#quantidade')
     private inputQntd: JQuery;
+    @domInject('#valor')
     private inputValor: JQuery;
     private negociacoes = new Negociacoes();
     private negociacoesView = new NegociacoesView('#NegociacoesView');
     private mensagemView = new MensagemView('#mensagemView');
     
     constructor() {
-        this.inputData = $('#data');
-        this.inputQntd = $('#quantidade');
-        this.inputValor = $('#valor');
         this.negociacoesView.update(this.negociacoes);
     }
 
