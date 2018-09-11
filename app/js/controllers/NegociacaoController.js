@@ -61,6 +61,26 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                 NegociacaoController.prototype.isWeekend = function (day) {
                     return day.getDay() === DiaSemana.Domingo || day.getDay() === DiaSemana.Sábado;
                 };
+                NegociacaoController.prototype.importarDados = function () {
+                    var _this = this;
+                    function isOk(res) {
+                        if (res.ok) {
+                            return res.json();
+                        }
+                        else {
+                            throw new Error(res.statusText);
+                        }
+                    }
+                    fetch('http://localhost:8080/dados')
+                        .then(function (res) { return isOk(res); })
+                        .then(function (dados) {
+                        dados
+                            .map(function (dado) { return new index_1.Negociacao(new Date(), dado.vezes, dado.montante); })
+                            .forEach(function (negociacao) { return _this.negociacoes.adiciona(negociacao); });
+                        _this.negociacoesView.update(_this.negociacoes);
+                    })
+                        .catch(function (err) { return console.error(err.message); });
+                };
                 __decorate([
                     index_3.domInject('#data')
                 ], NegociacaoController.prototype, "inputData", void 0);

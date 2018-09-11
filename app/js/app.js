@@ -10,10 +10,12 @@ System.register(["./controllers/NegociacaoController"], function (exports_1, con
         ],
         execute: function () {
             elements = {
-                form: $('.form')
+                form: $('.form'),
+                btnImporta: $('#botao-importa')
             };
             negociacaoController = new NegociacaoController_1.NegociacaoController();
             elements.form.submit(negociacaoController.adiciona.bind(negociacaoController));
+            elements.btnImporta.on('click', negociacaoController.importarDados.bind(negociacaoController));
         }
     };
 });
