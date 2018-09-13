@@ -1,7 +1,7 @@
 import { Negociacao, Negociacoes, NegociacaoParcial } from '../models/index';
 import { MensagemView, NegociacoesView } from '../views/index';
 import { logExecTime, domInject, throttle } from '../helpers/decorators/index';
-import { NegociacaoService } from '../services/NegociacaoService';
+import { NegociacaoService } from '../services/index';
 
 enum DiaSemana {
     Domingo,
