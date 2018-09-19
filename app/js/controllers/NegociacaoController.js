@@ -1,4 +1,4 @@
-System.register(["../models/index", "../views/index", "../helpers/decorators/index", "../services/index"], function (exports_1, context_1) {
+System.register(["../models/index", "../views/index", "../helpers/decorators/index", "../services/index", "../helpers/Utils"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -6,7 +6,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
-    var index_1, index_2, index_3, index_4, DiaSemana, NegociacaoController;
+    var index_1, index_2, index_3, index_4, Utils_1, DiaSemana, NegociacaoController;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [
@@ -21,6 +21,9 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
             },
             function (index_4_1) {
                 index_4 = index_4_1;
+            },
+            function (Utils_1_1) {
+                Utils_1 = Utils_1_1;
             }
         ],
         execute: function () {
@@ -56,6 +59,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                     }
                     var negociacao = new index_1.Negociacao(date, parseInt(this.inputQntd.val()), parseFloat(this.inputValor.val()));
                     this.negociacoes.adiciona(negociacao);
+                    Utils_1.imprime(negociacao, this.negociacoes);
                     this.negociacoesView.update(this.negociacoes);
                     this.mensagemView.update('Negociação Adicionada com sucesso!', 'success');
                     setTimeout(function (e) {

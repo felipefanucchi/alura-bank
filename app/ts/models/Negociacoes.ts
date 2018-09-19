@@ -9,4 +9,8 @@ export class Negociacoes {
     toArray():Negociacao[] { 
         return ([] as Negociacao[]).concat(this.negociacoes);
     }
+
+    toText():void {
+        console.log(JSON.stringify(this.negociacoes));
+    }
 }

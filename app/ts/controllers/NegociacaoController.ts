@@ -2,6 +2,7 @@ import { Negociacao, Negociacoes, NegociacaoParcial } from '../models/index';
 import { MensagemView, NegociacoesView } from '../views/index';
 import { logExecTime, domInject, throttle } from '../helpers/decorators/index';
 import { NegociacaoService } from '../services/index';
+import { imprime } from '../helpers/Utils';
 
 enum DiaSemana {
     Domingo,
@@ -54,8 +55,9 @@ export class NegociacaoController {
             parseInt((this.inputQntd.val() as string)),
             parseFloat((this.inputValor.val() as string))
         );
-        
+
         this.negociacoes.adiciona(negociacao);
+        imprime(negociacao, this.negociacoes);
         this.negociacoesView.update(this.negociacoes);
         this.mensagemView.update('Negociação Adicionada com sucesso!', 'success');
 

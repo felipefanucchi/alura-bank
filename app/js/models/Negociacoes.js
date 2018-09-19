@@ -15,6 +15,9 @@ System.register([], function (exports_1, context_1) {
                 Negociacoes.prototype.toArray = function () {
                     return [].concat(this.negociacoes);
                 };
+                Negociacoes.prototype.toText = function () {
+                    console.log(JSON.stringify(this.negociacoes));
+                };
                 return Negociacoes;
             }());
             exports_1("Negociacoes", Negociacoes);
