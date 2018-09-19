@@ -1,4 +1,4 @@
-System.register(["../models/index", "../views/index", "../helpers/decorators/index", "../services/NegociacaoService"], function (exports_1, context_1) {
+System.register(["../models/index", "../views/index", "../helpers/decorators/index", "../services/index"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -6,7 +6,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
-    var index_1, index_2, index_3, NegociacaoService_1, DiaSemana, NegociacaoController;
+    var index_1, index_2, index_3, index_4, DiaSemana, NegociacaoController;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [
@@ -19,8 +19,8 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
             function (index_3_1) {
                 index_3 = index_3_1;
             },
-            function (NegociacaoService_1_1) {
-                NegociacaoService_1 = NegociacaoService_1_1;
+            function (index_4_1) {
+                index_4 = index_4_1;
             }
         ],
         execute: function () {
@@ -39,7 +39,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                     this.negociacoes = new index_1.Negociacoes();
                     this.negociacoesView = new index_2.NegociacoesView('#NegociacoesView');
                     this.mensagemView = new index_2.MensagemView('#mensagemView');
-                    this.service = new NegociacaoService_1.NegociacaoService();
+                    this.service = new index_4.NegociacaoService();
                     this.negociacoesView.update(this.negociacoes);
                 }
                 NegociacaoController.prototype.adiciona = function (e) {
@@ -67,15 +67,11 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                 };
                 NegociacaoController.prototype.importarDados = function () {
                     var _this = this;
-                    function isOk(res) {
-                        if (res.ok) {
-                            return res.json();
-                        }
-                        else {
-                            throw new Error(res.statusText);
-                        }
-                    }
-                    this.service.getNegociacoes(isOk)
+                    this.service.getNegociacoes(function (res) {
+                        if (res.ok)
+                            return res;
+                        throw new Error(res.statusText);
+                    })
                         .then(function (negociacoes) {
                         negociacoes.forEach(function (negociacao) { return _this.negociacoes.adiciona(negociacao); });
                         _this.negociacoesView.update(_this.negociacoes);

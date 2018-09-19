@@ -70,18 +70,13 @@ export class NegociacaoController {
 
     @throttle()
     importarDados() {
-        function isOk(res: Response) {
-            if(res.ok) {
-                return res.json();
-            } else {
-                throw new Error(res.statusText);
-            }
-        }
-
-        this.service.getNegociacoes(isOk)
-            .then(negociacoes => {
-                negociacoes.forEach(negociacao => this.negociacoes.adiciona(negociacao));
-                this.negociacoesView.update(this.negociacoes);
-            })
+        this.service.getNegociacoes(res => {
+            if(res.ok) return res;
+            throw new Error(res.statusText);
+        })
+        .then(negociacoes => {
+            negociacoes.forEach(negociacao => this.negociacoes.adiciona(negociacao));
+            this.negociacoesView.update(this.negociacoes);
+        })
     }
 }

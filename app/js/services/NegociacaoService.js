@@ -15,6 +15,7 @@ System.register(["../models/index"], function (exports_1, context_1) {
                 NegociacaoService.prototype.getNegociacoes = function (handler) {
                     return fetch('http://localhost:8080/dados')
                         .then(function (res) { return handler(res); })
+                        .then(function (res) { return res.json(); })
                         .then(function (dados) {
                         return dados.map(function (dado) { return new index_1.Negociacao(new Date(), dado.vezes, dado.montante); });
                     })
