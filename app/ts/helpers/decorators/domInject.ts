@@ -4,7 +4,7 @@ export function domInject(selector: string) {
 
         const getter = function() {
             if(!el) {
-                console.log(`Seletor ${selector} adicionado a propriedade ${key}`);
+                // console.log(`Seletor ${selector} adicionado a propriedade ${key}`);
                 el = $(selector)
             }
             return el;

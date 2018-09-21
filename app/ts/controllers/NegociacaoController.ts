@@ -1,8 +1,8 @@
-import { Negociacao, Negociacoes, NegociacaoParcial } from '../models/index';
+import { Negociacao, Negociacoes, Igualavel } from '../models/index';
 import { MensagemView, NegociacoesView } from '../views/index';
 import { logExecTime, domInject, throttle } from '../helpers/decorators/index';
 import { NegociacaoService } from '../services/index';
-import { imprime } from '../helpers/Utils';
+import { toLog } from '../helpers/Utils';
 
 enum DiaSemana {
     Domingo,
@@ -35,7 +35,7 @@ export class NegociacaoController {
     }
 
     @throttle()
-    @logExecTime(true)
+    //@logExecTime(true)
     adiciona(e: Event):boolean | void {
         e.preventDefault();
         
@@ -57,7 +57,7 @@ export class NegociacaoController {
         );
 
         this.negociacoes.adiciona(negociacao);
-        imprime(negociacao, this.negociacoes);
+        toLog(negociacao, this.negociacoes);
         this.negociacoesView.update(this.negociacoes);
         this.mensagemView.update('Negociação Adicionada com sucesso!', 'success');
 
@@ -76,8 +76,17 @@ export class NegociacaoController {
             if(res.ok) return res;
             throw new Error(res.statusText);
         })
-        .then(negociacoes => {
-            negociacoes.forEach(negociacao => this.negociacoes.adiciona(negociacao));
+        .then(negociacoesParaImportar => {
+            const negociacoesJaImportadas = this.negociacoes.toArray(); 
+
+            negociacoesParaImportar
+                .filter(negociacao => 
+                    !negociacoesJaImportadas.some(negociacaoJaImportada => 
+                        negociacao.isEqual(negociacaoJaImportada)))
+                .forEach(negociacao => {
+                    this.negociacoes.adiciona(negociacao);
+                });
+
             this.negociacoesView.update(this.negociacoes);
         })
     }

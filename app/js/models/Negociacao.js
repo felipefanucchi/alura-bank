@@ -18,8 +18,13 @@ System.register([], function (exports_1, context_1) {
                     enumerable: true,
                     configurable: true
                 });
-                Negociacao.prototype.toText = function () {
+                Negociacao.prototype.log = function () {
                     console.log("Data: " + this.data + "\n        Quantidade: " + this.quantidade + "\n        Valor: " + this.valor);
+                };
+                Negociacao.prototype.isEqual = function (negociacao) {
+                    return this.data.getDate() == negociacao.data.getDate()
+                        && this.data.getMonth() == negociacao.data.getMonth()
+                        && this.data.getFullYear() == negociacao.data.getFullYear();
                 };
                 return Negociacao;
             }());

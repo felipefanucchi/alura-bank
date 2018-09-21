@@ -59,7 +59,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                     }
                     var negociacao = new index_1.Negociacao(date, parseInt(this.inputQntd.val()), parseFloat(this.inputValor.val()));
                     this.negociacoes.adiciona(negociacao);
-                    Utils_1.imprime(negociacao, this.negociacoes);
+                    Utils_1.toLog(negociacao, this.negociacoes);
                     this.negociacoesView.update(this.negociacoes);
                     this.mensagemView.update('Negociação Adicionada com sucesso!', 'success');
                     setTimeout(function (e) {
@@ -76,8 +76,17 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                             return res;
                         throw new Error(res.statusText);
                     })
-                        .then(function (negociacoes) {
-                        negociacoes.forEach(function (negociacao) { return _this.negociacoes.adiciona(negociacao); });
+                        .then(function (negociacoesParaImportar) {
+                        var negociacoesJaImportadas = _this.negociacoes.toArray();
+                        negociacoesParaImportar
+                            .filter(function (negociacao) {
+                            return !negociacoesJaImportadas.some(function (negociacaoJaImportada) {
+                                return negociacao.isEqual(negociacaoJaImportada);
+                            });
+                        })
+                            .forEach(function (negociacao) {
+                            _this.negociacoes.adiciona(negociacao);
+                        });
                         _this.negociacoesView.update(_this.negociacoes);
                     });
                 };
@@ -91,8 +100,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                     index_3.domInject('#valor')
                 ], NegociacaoController.prototype, "inputValor", void 0);
                 __decorate([
-                    index_3.throttle(),
-                    index_3.logExecTime(true)
+                    index_3.throttle()
                 ], NegociacaoController.prototype, "adiciona", null);
                 __decorate([
                     index_3.throttle()

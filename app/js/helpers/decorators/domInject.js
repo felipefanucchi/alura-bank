@@ -6,7 +6,6 @@ System.register([], function (exports_1, context_1) {
             var el;
             var getter = function () {
                 if (!el) {
-                    console.log("Seletor " + selector + " adicionado a propriedade " + key);
                     el = $(selector);
                 }
                 return el;

@@ -1,3 +1,5 @@
-export function imprime(...args: any[]) {
-    args.forEach(obj => obj.toText());
+import { Imprimivel } from '../models/index';
+
+export function toLog(...args: Imprimivel[]) {
+    args.forEach(obj => obj.log());
 }

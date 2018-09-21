@@ -1,5 +1,7 @@
 import { Negociacao } from './Negociacao';
-export class Negociacoes {
+import { Imprimivel } from './Imprimivel';
+
+export class Negociacoes implements Imprimivel {
     private negociacoes: Negociacao[] = new Array();
 
     adiciona(negociacao: Negociacao):void {
@@ -10,7 +12,7 @@ export class Negociacoes {
         return ([] as Negociacao[]).concat(this.negociacoes);
     }
 
-    toText():void {
+    log():void {
         console.log(JSON.stringify(this.negociacoes));
     }
 }
