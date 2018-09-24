@@ -1,7 +1,6 @@
-import { Negociacao } from './Negociacao';
-import { Imprimivel } from './Imprimivel';
+import { Negociacao, Interfaces } from '../models/index';
 
-export class Negociacoes implements Imprimivel {
+export class Negociacoes implements Interfaces<Negociacoes> {
     private negociacoes: Negociacao[] = new Array();
 
     adiciona(negociacao: Negociacao):void {
@@ -14,5 +13,9 @@ export class Negociacoes implements Imprimivel {
 
     log():void {
         console.log(JSON.stringify(this.negociacoes));
+    }
+
+    isEqual(negociacoes: Negociacoes) {
+        return JSON.stringify(this.negociacoes) === JSON.stringify(negociacoes.toArray())
     }
 }

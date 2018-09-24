@@ -18,6 +18,9 @@ System.register([], function (exports_1, context_1) {
                 Negociacoes.prototype.log = function () {
                     console.log(JSON.stringify(this.negociacoes));
                 };
+                Negociacoes.prototype.isEqual = function (negociacoes) {
+                    return JSON.stringify(this.negociacoes) === JSON.stringify(negociacoes.toArray());
+                };
                 return Negociacoes;
             }());
             exports_1("Negociacoes", Negociacoes);

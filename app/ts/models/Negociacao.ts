@@ -1,7 +1,6 @@
-import { Imprimivel } from './Imprimivel';
-import { Igualavel } from './Igualavel';
+import { Interfaces } from '../models/Interfaces';
 
-export class Negociacao implements Imprimivel, Igualavel<Negociacao> {
+export class Negociacao implements Interfaces<Negociacao> {
 
     constructor(
         readonly data: Date, 
